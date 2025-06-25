@@ -4,12 +4,13 @@ import WelcomeScreen from "../screens/WelcomeScreen";
 import LoginScreen from "../screens/LoginScreen";
 import CalculadoraScreen from "../screens/CalculadoraScreen";
 import IMCScreen from "../screens/IMCScreen";
+import { RegitroUsuarioScreen } from "../screens/RegitroUsuarioScreen";
 
 const Tab = createBottomTabNavigator();
 
 function MyTab() {
     return (
-        <Tab.Navigator initialRouteName="Login">
+        <Tab.Navigator initialRouteName="Welcome">
             <Tab.Screen 
                 name="Welcome" 
                 component={WelcomeScreen}
@@ -18,6 +19,7 @@ function MyTab() {
             <Tab.Screen name="Login" component={LoginScreen}/>
             <Tab.Screen name="Calculadora" component={CalculadoraScreen}/>
             <Tab.Screen name="IMC" component={IMCScreen}/>
+            <Tab.Screen name="Registro" component={RegitroUsuarioScreen}/>
         </Tab.Navigator>
     )
 }
