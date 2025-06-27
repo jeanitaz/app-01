@@ -1,5 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
 import { NavigationContainer } from "@react-navigation/native"
 
 
@@ -14,6 +15,9 @@ import FormularioScreen from "../screens/FormularioScreen"
 import { RegitroUsuarioScreen } from "../screens/RegitroUsuarioScreen"
 import { DireccionScreen } from "../screens/DireccionScreen"
 import EncestaScreen from "../screens/EncestaScreen"
+import ListaLocal from "../screens/listas/ListaLocalScreen"
+import ListaLocalExterna from "../screens/listas/ListaLocalExterna"
+import ListaEjercicioScreen from "../screens/listas/ListaEjercicioScreen"
 
 const Stack = createStackNavigator()
 
@@ -34,7 +38,7 @@ const Tab = createBottomTabNavigator()
 function MyTab(){
     return(
         <Tab.Navigator 
-        initialRouteName="Registro"
+        initialRouteName="Top"
         screenOptions={{headerShown: false}}>
             <Tab.Screen name="Calculadora" component={CalculadoraScreen} options={{
                 tabBarIcon: ()=>(<Ionicons name="calculator" size={24} color="black" />)
@@ -50,12 +54,22 @@ function MyTab(){
             <Tab.Screen name="Encuesta" component={EncestaScreen} options={{
                 tabBarIcon: ()=>(<AntDesign name="form" size={24} color="black" />)
                 }}/>
+
+            <Tab.Screen name="Top" component={MyTop} />
         </Tab.Navigator>
     )
 }
 
-
-
+const Top = createBottomTabNavigator()
+function MyTop(){
+    return(
+    <Top.Navigator initialRouteName="Ejercicio">
+        <Top.Screen name="Top" component={ListaLocal} />
+        <Top.Screen name="Externa" component={ListaLocalExterna} />
+        <Top.Screen name="Ejercicio" component={ListaEjercicioScreen} />
+    </Top.Navigator>
+)
+}
 export default function NavegadorPrincipal(){
     return(
         <NavigationContainer>
